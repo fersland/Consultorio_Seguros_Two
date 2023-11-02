@@ -6,9 +6,8 @@
 
 <h1>@ViewData["Title"]</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+<p><a asp-action="Create">Create New</a></p>
+<p class="text-center text-success">@TempData["successMessage"]</p>
 <table class="table">
     <thead>
         <tr>
@@ -21,7 +20,7 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
+    @foreach (var item in Model) {
         <tr>
             <td>@Html.DisplayFor(modelItem => item.Id)</td>
             <td>@Html.DisplayFor(modelItem => item.Cedula)</td>
@@ -34,6 +33,6 @@
                 @Html.ActionLink("Delete", "Delete", new { id=item.Id })
             </td>
         </tr>
-}
+    }
     </tbody>
 </table>
