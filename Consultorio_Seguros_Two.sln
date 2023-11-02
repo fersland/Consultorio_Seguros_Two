@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34003.232
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Consultorio_Seguros_Two", "Consultorio_Seguros_Two\Consultorio_Seguros_Two.csproj", "{62E88226-D8BD-4151-B0A8-F2B2286640CD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Consultorio_Seguros.Models", "Consultorio_Seguros.Models\Consultorio_Seguros.Models.csproj", "{0DCE5876-0B79-43C7-A0E5-75ACC7184B91}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{62E88226-D8BD-4151-B0A8-F2B2286640CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{62E88226-D8BD-4151-B0A8-F2B2286640CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{62E88226-D8BD-4151-B0A8-F2B2286640CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{62E88226-D8BD-4151-B0A8-F2B2286640CD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0DCE5876-0B79-43C7-A0E5-75ACC7184B91}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0DCE5876-0B79-43C7-A0E5-75ACC7184B91}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0DCE5876-0B79-43C7-A0E5-75ACC7184B91}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0DCE5876-0B79-43C7-A0E5-75ACC7184B91}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5F157C72-BD96-48F4-B96E-EA08965A35F0}
+	EndGlobalSection
+EndGlobal
