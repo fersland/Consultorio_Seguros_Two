@@ -13,6 +13,8 @@ builder.Services.AddTransient<IDbConnection>(options =>
     new SqlConnection(builder.Configuration.GetConnectionString("db")));
 //builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer("name=db"));
 builder.Services.AddScoped<IClienteRepo, ClienteRepo>();
+builder.Services.AddScoped<ISeguroRepo, SeguroRepo>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
