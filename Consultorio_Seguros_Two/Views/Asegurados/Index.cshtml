@@ -1,0 +1,45 @@
+﻿@model IEnumerable<Consultorio_Seguros.Models.ViewModel.AseguradoVM>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+<p class="text-center text-success">@TempData["successMessage"]</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th></th>
+            <th>CEDULA</th>
+            <th>NOMBRE CLIENTE</th>
+            <th>CODIGO</th>
+            <th>NOMBRE_SEGURO</th>
+            <th>ASEGURADA</th>
+            <th>PRIMA</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model) {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.Id)</td>
+            <td>@Html.DisplayFor(modelItem => item.Cedula)</td>
+            <td>@Html.DisplayFor(modelItem => item.NombreCliente)</td>
+            <td>@Html.DisplayFor(modelItem => item.Codigo)</td>
+            <td>@Html.DisplayFor(modelItem => item.NombreSeguro)</td>
+            <td>@Html.DisplayFor(modelItem => item.Asegurada)</td>
+            <td>@Html.DisplayFor(modelItem => item.Prima)</td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+                @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

@@ -1,0 +1,43 @@
+﻿@model Consultorio_Seguros.Models.Seguro
+
+@{
+    ViewData["Title"] = "Seguros / Ver Información";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div>
+    <h4>Seguro</h4>
+    <hr />
+    <dl class="row">
+                
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Codigo)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Codigo)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Asegurada)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Asegurada)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Prima)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Prima)
+        </dd>
+    </dl>
+</div>
+<div>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    <a asp-action="Index">Back to List</a>
+</div>

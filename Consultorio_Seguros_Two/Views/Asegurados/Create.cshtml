@@ -1,0 +1,42 @@
+﻿@model Consultorio_Seguros.Models.Asegurado
+
+@{
+    ViewData["Title"] = "Asegurados / Nuevo";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+           
+            <div class="form-group">
+                <label asp-for="ClienteId" class="control-label">CLIENTE</label>
+                <select asp-for="ClienteId" class="form-control" asp-items="@(new SelectList(ViewBag.Clientes, "Id", "Nombre"))">
+                    <option>-- SELECCIONAR --</option>
+                </select>
+                <span asp-validation-for="ClienteId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SeguroId" class="control-label">SEGURO</label>
+                <select asp-for="SeguroId" class="form-control" asp-items="@(new SelectList(ViewBag.Seguros, "Id", "Nombre"))">
+                    <option>-- SELECCIONAR --</option>
+                </select>
+                <span asp-validation-for="SeguroId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

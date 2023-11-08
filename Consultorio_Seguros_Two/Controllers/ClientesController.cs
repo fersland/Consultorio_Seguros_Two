@@ -92,5 +92,14 @@ namespace Consultorio_Seguros.Web.Controllers
             return View(cliente);
         }
 
+        [HttpGet]
+        public IActionResult Details(int id)
+        {
+            DynamicParameters parameters = new DynamicParameters();
+            parameters.Add("@Id", id);
+            var cliente = _clienteRepo.GetClienteById("GetClienteById", parameters, CommandType.StoredProcedure);
+            return View(cliente);
+        }
+
     }
 }
