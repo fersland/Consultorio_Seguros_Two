@@ -33,15 +33,5 @@ namespace Consultorio_Seguros.Repositories
         {
             return _connection.Query<AseguradoVM>(procedureName, parameters, commandType: commandType);
         }
-
-        public IEnumerable<Cliente> GetClientes(string procedureName, DynamicParameters parameters, CommandType commandType = CommandType.StoredProcedure)
-        {
-            return _connection.Query<Cliente>(procedureName, parameters, commandType: commandType);
-        }
-
-        public IEnumerable<Seguro> GetSeguros(string procedureName, DynamicParameters parameters, CommandType commandType = CommandType.StoredProcedure)
-        {
-            return _connection.Query<Seguro>(procedureName, parameters, commandType: commandType);
-        }
     }
 }

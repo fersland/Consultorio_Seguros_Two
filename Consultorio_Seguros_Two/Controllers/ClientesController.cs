@@ -37,6 +37,7 @@ namespace Consultorio_Seguros.Web.Controllers
                 parameters.Add("@Nombre", cliente.Nombre);
                 parameters.Add("@Telefono", cliente.Telefono);
                 parameters.Add("@Edad", cliente.Edad);
+
                 _clienteRepo.DMLCliente("InsertCliente", parameters, CommandType.StoredProcedure);
                 return RedirectToAction("Index");
             }
@@ -63,6 +64,7 @@ namespace Consultorio_Seguros.Web.Controllers
                 parameters.Add("@Nombre", cliente.Nombre);
                 parameters.Add("@Telefono", cliente.Telefono);
                 parameters.Add("@Edad", cliente.Edad);
+
                 _clienteRepo.DMLCliente("UpdateCliente", parameters, CommandType.StoredProcedure);
                 return RedirectToAction("Index");
             }

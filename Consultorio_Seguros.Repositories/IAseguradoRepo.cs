@@ -13,8 +13,6 @@ namespace Consultorio_Seguros.Repositories
     public interface IAseguradoRepo
     {
         IEnumerable<AseguradoVM> GetAsegurados(string procedureName, DynamicParameters parameters, CommandType commandType = CommandType.StoredProcedure);
-        IEnumerable<Cliente> GetClientes(string procedureName, DynamicParameters parameters, CommandType commandType = CommandType.StoredProcedure);
-        IEnumerable<Seguro> GetSeguros(string procedureName, DynamicParameters parameters, CommandType commandType = CommandType.StoredProcedure);
         Asegurado GetAseguradoById(string procedureName, DynamicParameters parameters, CommandType commandType = CommandType.StoredProcedure);
         void DMLAsegurado(string procedureName, DynamicParameters parameters, CommandType commandType = CommandType.StoredProcedure);
     }
