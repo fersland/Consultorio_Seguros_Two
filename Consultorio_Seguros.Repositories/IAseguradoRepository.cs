@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Consultorio_Seguros.Repositories
 {
-    public interface IAseguradoRepo
+    public interface IAseguradoRepository
     {
         IEnumerable<AseguradoVM> GetAsegurados(string procedureName, DynamicParameters parameters, CommandType commandType = CommandType.StoredProcedure);
         Asegurado GetAseguradoById(string procedureName, DynamicParameters parameters, CommandType commandType = CommandType.StoredProcedure);

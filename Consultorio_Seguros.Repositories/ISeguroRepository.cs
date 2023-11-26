@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Consultorio_Seguros.Repositories
 {
-    public interface ISeguroRepo
+    public interface ISeguroRepository
     {
         IEnumerable<Seguro> GetSeguros(string procedureName, DynamicParameters parameters, CommandType commandType = CommandType.StoredProcedure);
         Seguro GetSeguroById(string procedureName, DynamicParameters parameters, CommandType commandType= CommandType.StoredProcedure);

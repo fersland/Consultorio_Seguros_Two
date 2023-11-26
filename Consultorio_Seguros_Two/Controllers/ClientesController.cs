@@ -8,16 +8,16 @@ namespace Consultorio_Seguros.Web.Controllers
 {
     public class ClientesController : Controller
     {
-        private IClienteRepo _clienteRepo;
+        private IClienteRepository _clienteRepository;
 
-        public ClientesController(IClienteRepo clienteRepo)
+        public ClientesController(IClienteRepository clienteRepo)
         {
-            this._clienteRepo = clienteRepo;
+            this._clienteRepository = clienteRepo;
         }
 
         public IActionResult Index()
         {
-            var clientes = _clienteRepo.GetClientes("GetClientes", null, System.Data.CommandType.StoredProcedure);
+            var clientes = _clienteRepository.GetAll();
             return View(clientes);
         }
 
@@ -31,14 +31,9 @@ namespace Consultorio_Seguros.Web.Controllers
         public IActionResult Create(Cliente cliente)
         {
             if(ModelState.IsValid)
-            {
-                DynamicParameters parameters = new DynamicParameters();
-                parameters.Add("@Cedula", cliente.Cedula);
-                parameters.Add("@Nombre", cliente.Nombre);
-                parameters.Add("@Telefono", cliente.Telefono);
-                parameters.Add("@Edad", cliente.Edad);
-
-                _clienteRepo.DMLCliente("InsertCliente", parameters, CommandType.StoredProcedure);
+            {                
+                _clienteRepository.Insert(cliente);
+                TempData["successMessage"] = "Dato registrado correctamente.";
                 return RedirectToAction("Index");
             }
             return View(cliente);
@@ -47,25 +42,17 @@ namespace Consultorio_Seguros.Web.Controllers
         [HttpGet]
         public IActionResult Edit(int id)
         {
-            DynamicParameters parameters = new DynamicParameters();
-            parameters.Add("@Id", id);
-            var cliente = _clienteRepo.GetClienteById("GetClienteById", parameters, CommandType.StoredProcedure);
+            var cliente = _clienteRepository.GetById(id);
             return View(cliente);
         }
 
         [HttpPost]
-        public IActionResult Edit(Cliente cliente)
+        public IActionResult Edit(int id, Cliente cliente)
         {
             if(ModelState.IsValid)
             {
-                DynamicParameters parameters = new DynamicParameters();
-                parameters.Add("@Id", cliente.Id);
-                parameters.Add("@Cedula", cliente.Cedula);
-                parameters.Add("@Nombre", cliente.Nombre);
-                parameters.Add("@Telefono", cliente.Telefono);
-                parameters.Add("@Edad", cliente.Edad);
-
-                _clienteRepo.DMLCliente("UpdateCliente", parameters, CommandType.StoredProcedure);
+                _clienteRepository.Update(id, cliente);
+                TempData["successMessage"] = "Dato actualizado correctamente.";
                 return RedirectToAction("Index");
             }
             return View(cliente);
@@ -74,9 +61,7 @@ namespace Consultorio_Seguros.Web.Controllers
         [HttpGet]
         public IActionResult Delete(int id)
         {
-            DynamicParameters parameters = new DynamicParameters();
-            parameters.Add("@Id", id);
-            var cliente = _clienteRepo.GetClienteById("GetClienteById", parameters, CommandType.StoredProcedure);
+            var cliente = _clienteRepository.GetById(id);
             return View(cliente);
         }
 
@@ -84,10 +69,8 @@ namespace Consultorio_Seguros.Web.Controllers
         public IActionResult Delete(int id, Cliente cliente)
         {
             if (ModelState.IsValid)
-            {
-                DynamicParameters parameters = new DynamicParameters();
-                parameters.Add("@Id", id);
-                _clienteRepo.DMLCliente("DeleteCliente", parameters, CommandType.StoredProcedure);
+            {                
+                _clienteRepository.Delete(id);
                 TempData["successMessage"] = "Dato eliminado correctamente.";
                 return RedirectToAction("Index");
             }
@@ -97,9 +80,7 @@ namespace Consultorio_Seguros.Web.Controllers
         [HttpGet]
         public IActionResult Details(int id)
         {
-            DynamicParameters parameters = new DynamicParameters();
-            parameters.Add("@Id", id);
-            var cliente = _clienteRepo.GetClienteById("GetClienteById", parameters, CommandType.StoredProcedure);
+            var cliente = _clienteRepository.GetById(id);
             return View(cliente);
         }
 

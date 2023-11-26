@@ -14,5 +14,7 @@ namespace Consultorio_Seguros.Models
         public DbSet<Cliente> Clientes { get; set; }
         public DbSet<Seguro> Seguros { get; set; }
         public DbSet<Asegurado> Asegurados { get;set; }
+
+        public DbSet<Cantante> Cantantes { get; set; }
     }
 }

@@ -10,9 +10,9 @@ namespace Consultorio_Seguros_Two.Controllers
 {
     public class SegurosController : Controller
     {
-        private ISeguroRepo _repository;
+        private ISeguroRepository _repository;
 
-        public SegurosController(ISeguroRepo rep)
+        public SegurosController(ISeguroRepository rep)
         {
             this._repository = rep;
         }

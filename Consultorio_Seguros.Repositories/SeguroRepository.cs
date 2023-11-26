@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace Consultorio_Seguros.Repositories
 {
-    public class SeguroRepo : ISeguroRepo
+    public class SeguroRepository : ISeguroRepository
     {
         private readonly IDbConnection _connection;
 
-        public SeguroRepo(IDbConnection cc)
+        public SeguroRepository(IDbConnection cc)
         {
             this._connection = cc;
         }

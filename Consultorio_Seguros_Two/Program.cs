@@ -13,9 +13,10 @@ builder.Services.AddTransient<IDbConnection>(options =>
     new SqlConnection(builder.Configuration.GetConnectionString("db")));
 //builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer("name=db"));
 
-builder.Services.AddScoped<IClienteRepo, ClienteRepo>();
-builder.Services.AddScoped<ISeguroRepo, SeguroRepo>();
-builder.Services.AddScoped<IAseguradoRepo, AseguradoRepo>();
+builder.Services.AddScoped<IClienteRepository, ClienteRepository>();
+builder.Services.AddScoped<ISeguroRepository, SeguroRepository>();
+builder.Services.AddScoped<IAseguradoRepository, AseguradoRepository>();
+builder.Services.AddScoped<ICantanteRepository, CantanteRepository>();
 
 var app = builder.Build();
 
