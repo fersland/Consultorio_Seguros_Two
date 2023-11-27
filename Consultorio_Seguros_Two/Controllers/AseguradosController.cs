@@ -22,7 +22,7 @@ namespace Consultorio_Seguros_Two.Controllers
 
         public IActionResult Index()
         {
-            var asegurado = _repository_asegurado.GetAsegurados("GetAsegurados", null, CommandType.StoredProcedure);
+            var asegurado = _repository_asegurado.GetAll();
             return View(asegurado);
         }
 
@@ -30,7 +30,7 @@ namespace Consultorio_Seguros_Two.Controllers
         public IActionResult Create()
         {
             ViewBag.Clientes = _repository_cliente.GetAll();
-            ViewBag.Seguros = _repository_seguro.GetSeguros("GetSeguros", null, CommandType.StoredProcedure);
+            ViewBag.Seguros = _repository_seguro.GetAll();
             return View();
         }
 
@@ -38,21 +38,17 @@ namespace Consultorio_Seguros_Two.Controllers
         public IActionResult Create(Asegurado asegurado)
         {
             ViewBag.Clientes = _repository_cliente.GetAll();
-            ViewBag.Seguros = _repository_seguro.GetSeguros("GetSeguros", null, CommandType.StoredProcedure);
+            ViewBag.Seguros = _repository_seguro.GetAll();
 
             if(asegurado is not null)
             {
-                DynamicParameters parameters = new DynamicParameters();
-                parameters.Add("@ClienteId", asegurado.ClienteId);
-                parameters.Add("@SeguroId", asegurado.SeguroId);
-
-                _repository_asegurado.DMLAsegurado("InsertAsegurado", parameters, CommandType.StoredProcedure);
+                _repository_asegurado.Insert(asegurado);
                 TempData["successMessage"] = "Dato guardado correctamente.";
                 return RedirectToAction("Index");
             }
             else
             {
-                TempData["errorMessage"] = "Este seguro ya se ha generado anteriormente.";
+                TempData["errorMessage"] = "Este seguro ya se ha guardado anteriormente.";
                 return View();
             }
         }

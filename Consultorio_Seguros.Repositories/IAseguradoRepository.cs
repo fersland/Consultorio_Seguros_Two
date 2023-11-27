@@ -12,8 +12,10 @@ namespace Consultorio_Seguros.Repositories
 {
     public interface IAseguradoRepository
     {
-        IEnumerable<AseguradoVM> GetAsegurados(string procedureName, DynamicParameters parameters, CommandType commandType = CommandType.StoredProcedure);
-        Asegurado GetAseguradoById(string procedureName, DynamicParameters parameters, CommandType commandType = CommandType.StoredProcedure);
-        void DMLAsegurado(string procedureName, DynamicParameters parameters, CommandType commandType = CommandType.StoredProcedure);
+        IEnumerable<AseguradoVM> GetAll();
+        Asegurado GetById(int id);
+        void Insert(Asegurado asegurado);
+        void Update(int id,  Asegurado asegurado);
+        void Delete(int id);
     }
 }

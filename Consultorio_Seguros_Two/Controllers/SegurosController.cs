@@ -19,7 +19,7 @@ namespace Consultorio_Seguros_Two.Controllers
 
         public IActionResult Index()
         {
-            var list = _repository.GetSeguros("GetSeguros", null, CommandType.StoredProcedure);
+            var list = _repository.GetAll();
             return View(list);
         }
 
@@ -33,13 +33,8 @@ namespace Consultorio_Seguros_Two.Controllers
         public IActionResult Create(Seguro seguro)
         {
             if(ModelState.IsValid)
-            {
-                DynamicParameters parameters = new DynamicParameters();
-                parameters.Add("@Codigo", seguro.Codigo);
-                parameters.Add("@Nombre", seguro.Nombre);
-                parameters.Add("@Asegurada", seguro.Asegurada);
-                parameters.Add("@Prima", seguro.Prima);
-                _repository.DMLSeguro("InsertSeguro", parameters, CommandType.StoredProcedure);
+            {               
+                _repository.Insert(seguro);
                 TempData["successMessage"] = "Dato creado correctamente.";
                 return RedirectToAction("Index");
             }
@@ -49,24 +44,17 @@ namespace Consultorio_Seguros_Two.Controllers
 
         [HttpGet]
         public IActionResult Edit(int id)
-        {
-            DynamicParameters parameters = new DynamicParameters();
-            parameters.Add("@Id", id);
-            var seguro = _repository.GetSeguroById("GetSeguroById", parameters, CommandType.StoredProcedure);
+        {            
+            var seguro = _repository.GetById(id);
             return View(seguro);
         }
 
-        public IActionResult Edit(Seguro seguro)
+        [HttpPost]
+        public IActionResult Edit(int id, Seguro seguro)
         {
             if (ModelState.IsValid)
-            {
-                DynamicParameters parameters = new DynamicParameters();
-                parameters.Add("@Id", seguro.Id);
-                parameters.Add("@Codigo", seguro.Codigo);
-                parameters.Add("@Nombre", seguro.Nombre);
-                parameters.Add("@Asegurada", seguro.Asegurada);
-                parameters.Add("@Prima", seguro.Prima);
-                _repository.DMLSeguro("UpdateSeguro", parameters, CommandType.StoredProcedure);
+            {                
+                _repository.Update(id, seguro);
                 TempData["successMessage"] = "Dato actualizado correctamente.";
                 return RedirectToAction("Index");
             }
@@ -76,9 +64,7 @@ namespace Consultorio_Seguros_Two.Controllers
         [HttpGet]
         public IActionResult Delete(int id)
         {
-            DynamicParameters parameters = new DynamicParameters();
-            parameters.Add("@Id", id);
-            var seguro = _repository.GetSeguroById("GetSeguroById", parameters, CommandType.StoredProcedure);
+            var seguro = _repository.GetById(id);
             return View(seguro);
         }
 
@@ -86,9 +72,7 @@ namespace Consultorio_Seguros_Two.Controllers
         {
             if (ModelState.IsValid)
             {
-                DynamicParameters parameters = new DynamicParameters();
-                parameters.Add("@Id", id);
-                _repository.DMLSeguro("DeleteSeguro", parameters, CommandType.StoredProcedure);
+                _repository.Delete(id);
                 TempData["successMessage"] = "Dato eliminado correctamente.";
                 return RedirectToAction("Index");
             }
@@ -98,9 +82,7 @@ namespace Consultorio_Seguros_Two.Controllers
         [HttpGet]
         public IActionResult Details(int id)
         {
-            DynamicParameters parameters = new DynamicParameters();
-            parameters.Add("@Id", id);
-            var seguro = _repository.GetSeguroById("GetSeguroById", parameters, CommandType.StoredProcedure);
+            var seguro = _repository.GetById(id);
             return View(seguro);
         }
     }

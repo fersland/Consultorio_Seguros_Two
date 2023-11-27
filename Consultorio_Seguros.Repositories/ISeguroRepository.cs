@@ -11,8 +11,10 @@ namespace Consultorio_Seguros.Repositories
 {
     public interface ISeguroRepository
     {
-        IEnumerable<Seguro> GetSeguros(string procedureName, DynamicParameters parameters, CommandType commandType = CommandType.StoredProcedure);
-        Seguro GetSeguroById(string procedureName, DynamicParameters parameters, CommandType commandType= CommandType.StoredProcedure);
-        void DMLSeguro(string procedureName, DynamicParameters parameters, CommandType commandType = CommandType.StoredProcedure);
+        IEnumerable<Seguro> GetAll();
+        Seguro GetById(int id);
+        void Insert(Seguro seguro);
+        void Update(int id, Seguro seguro);
+        void Delete(int id);
     }
 }

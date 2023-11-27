@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Consultorio_Seguros.Models.Cliente>
+﻿@model IEnumerable<Consultorio_Seguros.Models.Cantante>
 
 @{
     ViewData["Title"] = "LISTA DE CANTANTES";
@@ -12,10 +12,8 @@
     <thead>
         <tr>
             <th>@Html.DisplayNameFor(model => model.Id)</th>
-            <th>@Html.DisplayNameFor(model => model.Cedula)</th>
             <th>@Html.DisplayNameFor(model => model.Nombre)</th>
-            <th>@Html.DisplayNameFor(model => model.Telefono)</th>
-            <th>@Html.DisplayNameFor(model => model.Edad)</th>
+            <th>@Html.DisplayNameFor(model => model.Cancion)</th>
             <th></th>
         </tr>
     </thead>
@@ -24,10 +22,8 @@
         {
             <tr>
                 <td>@Html.DisplayFor(modelItem => item.Id)</td>
-                <td>@Html.DisplayFor(modelItem => item.Cedula)</td>
                 <td>@Html.DisplayFor(modelItem => item.Nombre)</td>
-                <td>@Html.DisplayFor(modelItem => item.Telefono)</td>
-                <td>@Html.DisplayFor(modelItem => item.Edad)</td>
+                <td>@Html.DisplayFor(modelItem => item.Cancion)</td>
                 <td>
                     @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
                     @Html.ActionLink("Details", "Details", new { id=item.Id }) |

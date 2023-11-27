@@ -11,8 +11,10 @@ namespace Consultorio_Seguros.Repositories
 {
     public interface ICantanteRepository
     {
-        IEnumerable<Cantante> GetAll(string procedureName, DynamicParameters paramters, CommandType commandType = CommandType.StoredProcedure);
-        Cantante GetById(string procedureName, DynamicParameters parameters, CommandType commandType = CommandType.StoredProcedure);
-        void DMLBase(string procedureName, DynamicParameters parameters, CommandType commandType= CommandType.StoredProcedure);
+        IEnumerable<Cantante> GetAll();
+        Cantante GetById(int id);
+        void Insert(Cantante cliente);
+        void Update(int id, Cantante cliente);
+        void Delete(int id);
     }
 }

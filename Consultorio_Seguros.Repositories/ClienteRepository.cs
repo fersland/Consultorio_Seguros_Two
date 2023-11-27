@@ -24,7 +24,7 @@ namespace Consultorio_Seguros.Repositories
             {
                 var parameters = new DynamicParameters();
                 parameters.Add("@Id", id, DbType.Int32);
-                return db.QueryFirstOrDefault<Cliente>("GetClienteById", parameters, commandType: CommandType.StoredProcedure);
+                return db.QueryFirst<Cliente>("GetClienteById", parameters, commandType: CommandType.StoredProcedure);
             }            
         }
 
