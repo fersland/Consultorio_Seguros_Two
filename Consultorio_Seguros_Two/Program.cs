@@ -8,7 +8,7 @@ using System.Data;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddControllersWithViews();
+builder.Services.AddControllersWithViews(); 
 builder.Services.AddTransient<IDbConnection>(options =>
     new SqlConnection(builder.Configuration.GetConnectionString("db")));
 //builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer("name=db"));
