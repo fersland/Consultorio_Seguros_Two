@@ -9,12 +9,13 @@ namespace Consultorio_Seguros.Models
 {
     public class AppDbContext : DbContext
     {        
-        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
+       // public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 
         public DbSet<Cliente> Clientes { get; set; }
         public DbSet<Seguro> Seguros { get; set; }
         public DbSet<Asegurado> Asegurados { get;set; }
 
         public DbSet<Cantante> Cantantes { get; set; }
+        public DbSet<Pelicula> Peliculas { get; set;}
     }
 }

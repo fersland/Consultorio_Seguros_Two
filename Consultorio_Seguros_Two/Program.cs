@@ -11,13 +11,16 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews(); 
 builder.Services.AddTransient<IDbConnection>(options =>
     new SqlConnection(builder.Configuration.GetConnectionString("db")));
+
 //builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer("name=db"));
 
 builder.Services.AddScoped<IClienteRepository, ClienteRepository>();
 builder.Services.AddScoped<ISeguroRepository, SeguroRepository>();
 builder.Services.AddScoped<IAseguradoRepository, AseguradoRepository>();
 builder.Services.AddScoped<ICantanteRepository, CantanteRepository>();
+builder.Services.AddScoped<IPeliculaRepository, PeliculaRepository>();
 
+builder.Services.AddControllers();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
