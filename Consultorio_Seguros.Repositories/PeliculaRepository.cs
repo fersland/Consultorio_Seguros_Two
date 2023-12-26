@@ -57,7 +57,16 @@ namespace Consultorio_Seguros.Repositories
 
         public void Update(Pelicula pelicula, int id)
         {
-            throw new NotImplementedException();
+            using (var db = _connection)
+            {
+                db.Open();
+                var parameters = new DynamicParameters();
+                parameters.Add("@Id", id, DbType.Int32);
+                parameters.Add("@Name", pelicula.Name, DbType.String);
+                parameters.Add("@Age", pelicula.Age, DbType.Int32);
+                parameters.Add("@Amount", pelicula.Amount, DbType.String);
+                db.Execute("UpdatePelicula", parameters, commandType: CommandType.StoredProcedure);
+            }
         }
     }
 }

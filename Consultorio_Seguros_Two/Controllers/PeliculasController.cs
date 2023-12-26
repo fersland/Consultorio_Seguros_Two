@@ -2,6 +2,7 @@
 using Consultorio_Seguros.Repositories;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 
 namespace Consultorio_Seguros_Two.Controllers
 {
@@ -56,20 +57,29 @@ namespace Consultorio_Seguros_Two.Controllers
         }
 
         // GET: PeliculasController/Edit/5
+        [HttpGet]
         public ActionResult Edit(int id)
         {
-            var peliculas = _peliculaRepository.GetAll();
+            var peliculas = _peliculaRepository.GetById(id);
             return View(peliculas);
         }
 
         // POST: PeliculasController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(Pelicula pelicula, int id)
         {
             try
             {
-                return RedirectToAction(nameof(Index));
+                if (ModelState.IsValid)
+                {
+                    _peliculaRepository.Update(pelicula, id);
+                    TempData["successMessage"] = "Datos actualizados correctamente.";
+                    return RedirectToAction(nameof(Index));
+
+                }
+                return View(pelicula);
+                
             }
             catch
             {
