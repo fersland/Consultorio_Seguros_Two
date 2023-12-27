@@ -56,6 +56,7 @@ namespace Consultorio_Seguros_Two.Controllers
             }
         }
 
+
         // GET: PeliculasController/Edit/5
         [HttpGet]
         public ActionResult Edit(int id)
