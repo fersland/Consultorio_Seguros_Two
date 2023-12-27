@@ -13,6 +13,6 @@ namespace Consultorio_Seguros.Repositories
         Pelicula GetById(int id);
         void Insert(Pelicula pelicula);
         void Update(Pelicula pelicula, int id);
-        void Delete(int id);
+        void Delete(Pelicula pelicula, int id);
     }
 }
