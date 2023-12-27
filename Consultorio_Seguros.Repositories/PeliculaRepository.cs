@@ -17,11 +17,7 @@ namespace Consultorio_Seguros.Repositories
         {
             this._connection = dbConnection;
         }
-
-        public void Delete(int id)
-        {
-            throw new NotImplementedException();
-        }
+                
 
         public IEnumerable<Pelicula> GetAll()
         {
@@ -66,6 +62,17 @@ namespace Consultorio_Seguros.Repositories
                 parameters.Add("@Age", pelicula.Age, DbType.Int32);
                 parameters.Add("@Amount", pelicula.Amount, DbType.String);
                 db.Execute("UpdatePelicula", parameters, commandType: CommandType.StoredProcedure);
+            }
+        }
+
+        public void Delete(Pelicula pelicula, int id)
+        {
+            using (var db = _connection)
+            {
+                db.Open();
+                var parameters = new DynamicParameters();
+                parameters.Add("@Id", id, DbType.Int32);
+                db.Execute("DeletePelicula", parameters, commandType: CommandType.StoredProcedure);
             }
         }
     }

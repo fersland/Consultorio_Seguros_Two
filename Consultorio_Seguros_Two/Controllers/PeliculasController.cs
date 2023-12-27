@@ -88,24 +88,23 @@ namespace Consultorio_Seguros_Two.Controllers
         }
 
         // GET: PeliculasController/Delete/5
-        public ActionResult Delete(int id)
+        [HttpGet]
+        public IActionResult Delete(int id)
         {
-            return View();
+            var peliculas = _peliculaRepository.GetById(id);
+            return View(peliculas);
         }
 
         // POST: PeliculasController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public IActionResult Delete(Pelicula pelicula, int id)
         {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            
+                _peliculaRepository.Delete(pelicula, id);
+                TempData["successMessage"] = "Pelicula elimiada correctamente.";
+                return RedirectToAction("Index");
+
         }
     }
 }
